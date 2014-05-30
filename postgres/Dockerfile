@@ -9,24 +9,16 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main 9.4' |te
 
 # install 9.4
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-  apt-get install -qy postgresql-9.4 postgresql-client-9.4 postgresql-contrib-9.4 logrotate && \
-  apt-get clean
+  apt-get install -qy postgresql-9.4 postgresql-client-9.4 postgresql-contrib-9.4
 
 # Set the default command to run when starting the container
 ADD root/ /
-RUN chown root.root /etc/supervisor/conf.d/*.conf
-RUN chown -R postgres.postgres /var/run/postgresql
+RUN /init.sh
 
 # VOLUME  ["/var/lib/postgresql/9.4/main"]
 EXPOSE 5432
-EXPOSE 22
 
-CMD /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# before first startup, run
-# mkdir -p /pg/main
-# chown -R postgres.postgres /pg/main
-# su - postgres
-# /usr/lib/postgresql/9.4/bin/initdb -D /pg/main --encoding UTF-8
 
 

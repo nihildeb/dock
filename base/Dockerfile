@@ -1,12 +1,14 @@
 FROM ubuntu:14.04
-MAINTAINER Phusion <info@phusion.nl>
+MAINTAINER Nick Hildebrant <nick.hildebrant@happymoose.com>
 
 ENV HOME /root
-ADD root/ /
 
+ADD build/ /build
 RUN /build/prepare.sh && \
         /build/system_services.sh && \
         /build/utilities.sh && \
         /build/cleanup.sh
 
-CMD ["/sbin/my_init"]
+ADD root/ /
+
+CMD ["/start.sh"]
