@@ -1,0 +1,2 @@
+remove cleanup from base and put it in the Dockerfile template
+move pg repos and client to the base
