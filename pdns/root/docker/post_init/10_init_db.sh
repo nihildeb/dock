@@ -2,8 +2,10 @@
 set -e
 set -x
 
-echo sample post_init script
+export PGPASSWORD=poilkj09
+cat /sql/init.sql | psql -U postgres -h $DB_PORT_5432_TCP_ADDR
 
 # only run the first time the container starts
 chmod -x "$0"
+
 

@@ -12,6 +12,6 @@ echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main 9.4' |tee -a
 
 apt-get update
 
-#$minimal_apt_get_install --allow-unauthenticated postgresql-client-9.4 postgresql-contrib-9.4
-$minimal_apt_get_install --allow-unauthenticated postgresql-client-9.4
+$minimal_apt_get_install --allow-unauthenticated postgresql-client-9.4 postgresql-contrib-9.4
+#$minimal_apt_get_install --allow-unauthenticated postgresql-client-9.4
 

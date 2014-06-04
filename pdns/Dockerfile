@@ -1,14 +1,15 @@
 FROM base
 MAINTAINER nick@happymoose.com
 
+# required to skip database setup
 ENV DEBIAN_FRONTEND noninteractive
-
-# install sqlite pdns
-RUN apt-get update && apt-get install -y pdns-server pdns-backend-pgsql dnsutils
 
 EXPOSE 53/udp
 
 ADD root/ /
+RUN /docker/run_all.sh /docker/build_begin
 
+RUN apt-get install -y pdns-server pdns-backend-pgsql dnsutils
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN /docker/run_all.sh /docker/build_end
+
