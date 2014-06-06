@@ -11,4 +11,4 @@ cp /docker/pre_init/postfix-files /usr/lib/postfix/
 /usr/sbin/postfix set-permissions
 
 cp /etc/resolv.conf /var/spool/postfix/etc/
-
+cp /etc/services /var/spool/postfix/etc/services
