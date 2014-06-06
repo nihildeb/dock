@@ -13,6 +13,9 @@ declare -A EMAILMAP=(
 [admin]=nick.hildebrant@gmail.com
 [sales]=nick.hildebrant@gmail.com
 [support]=nick.hildebrant@gmail.com
+[postmaster]=nick.hildebrant@gmail.com
+[webmaster]=nick.hildebrant@gmail.com
+[abuse]=nick.hildebrant@gmail.com
 )
 
 virtual_map() {
@@ -44,6 +47,10 @@ virtual_map() {
       echo "$K@$domain ${EMAILMAP[$K]}\n"
     done
   done
+
+  echo "lucy@hildebrant.org nick.hildebrant@gmail.com\n"
+  echo "ella@hildebrant.org nick.hildebrant@gmail.com\n"
+  echo "conni@hildebrant.org cornelia.woit@gmail.com\n"
 }
 
 echo -e $(virtual_map) | awk '{ printf "%-50s %-30s\n", $1, $2}'

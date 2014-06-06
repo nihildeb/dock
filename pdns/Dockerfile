@@ -4,7 +4,7 @@ MAINTAINER nick@happymoose.com
 # required to skip database setup
 ENV DEBIAN_FRONTEND noninteractive
 
-EXPOSE 53/udp
+EXPOSE 53 53/udp
 
 ADD root/ /
 RUN /docker/run_all.sh /docker/build_begin
