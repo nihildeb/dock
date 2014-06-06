@@ -1,1 +1,0 @@
-﻿INSERT INTO records (domain_id,name,content,type,ttl,prio)VALUES((select id from domains where name='ipsaw.com'),'_amazonses.ipsaw.com','O7JG0Bz5o1t8E1AbnKkucUOwQjTc7KMdD0UXFI5qg4M=','TXT',120,NULL);
