@@ -7,16 +7,9 @@ ENV INITRD no
 
 EXPOSE 80 443
 
-RUN apt-get remove -q -y --no-install-recommends ruby1.8 ruby1.9
+# RUN apt-get install -q -y --no-install-recommends --allow-unauthenticated libpq-dev
 
-RUN mkdir -p /tmp/ruby && cd /tmp/ruby && curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p481.tar.gz | tar xz && cd ruby-2.0.0-p481 && ./configure --disable-install-rdoc && make && sudo make install
-
-RUN apt-get install -q -y --no-install-recommends build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev
-
-RUN apt-get install -q -y --no-install-recommends openssh-server redis-server logrotate git-core postfix
-
-RUN apt-get install -q -y --no-install-recommends --allow-unauthenticated libpq-dev
-
+RUN FILE='gitlab.deb'; wget "https://downloads-packages.s3.amazonaws.com/ubuntu-12.04/gitlab_6.9.2-omnibus.1-1_amd64.deb" --no-check-certificate -O $FILE && dpkg -i $FILE; rm $FILE
 
 ADD root/ /
 
