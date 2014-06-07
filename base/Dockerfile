@@ -17,5 +17,5 @@ ADD root/ /
 
 ## custom steps
 
-# RUN /docker/run_all.sh /docker/build_end
+RUN /docker/run_all.sh /docker/build_end
 

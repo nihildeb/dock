@@ -1,12 +1,15 @@
-FROM ubuntu:14.04
+FROM base
 MAINTAINER nick@happymoose.com
 
+# required to skip database setup
 ENV DEBIAN_FRONTEND noninteractive
+ENV INITRD no
 
-RUN apt-get update && \
-	apt-get install -y nginx logrotate && \
-	apt-get clean
+EXPOSE 80 443
 
-ADD assets/ /app/
-	
+RUN apt-get update && apt-get install -q -y --no-install-recommends nginx && apt-get clean
+
+ADD root/ /
+
+RUN /docker/run_all.sh /docker/build_end
 
